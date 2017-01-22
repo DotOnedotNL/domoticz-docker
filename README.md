@@ -1,4 +1,4 @@
-# mkdomoticz
+# domoticz-docker
 Make a persistent domoticz container
 
 ### Requirements
@@ -7,7 +7,7 @@ docker
 
 ## Contributing
 
-Feel free to make an issue or pull request [here](https://github.com/joshuacox/mkdomoticz)
+Feel free to make an issue or pull request [here](https://github.com/avinkdotone/domoticz-docker)
 
 ### Usage
 
