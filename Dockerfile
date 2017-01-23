@@ -1,12 +1,15 @@
-FROM debian:stretch
+#FROM debian:stretch
+FROM nodesource/jessie
 MAINTAINER Andre Vink <andre 'at' DotOne.nl>
 
 ENV DOMOTICZ-DOCKER_UPDATE 20170122
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM xterm
 
 # install packages
 RUN apt-get update && apt-get install -y \
 	git \
-	libssl1.0.2 libssl-dev \
+	libssl1.0.0 libssl-dev \
 	build-essential cmake \
 	libboost-all-dev \
 	libsqlite3-0 libsqlite3-dev \
@@ -14,6 +17,9 @@ RUN apt-get update && apt-get install -y \
 	libusb-0.1-4 libusb-dev \
 	zlib1g-dev \
 	libudev-dev \
+	python3 \
+	libpython3.4 \
+        python3-dev \
     fail2ban
     # linux-headers-generic
 
@@ -46,7 +52,7 @@ RUN cmake -DCMAKE_BUILD_TYPE=Release .
 RUN make
 
 # remove git and tmp dirs
-RUN apt-get remove -y git cmake linux-headers-amd64 build-essential libssl-dev libboost-dev libboost-thread-dev libboost-system-dev libsqlite3-dev libcurl4-openssl-dev libusb-dev zlib1g-dev libudev-dev && \
+RUN apt-get remove -y git cmake linux-headers-amd64 build-essential libssl-dev libboost-dev libboost-thread-dev libboost-system-dev libsqlite3-dev libcurl4-openssl-dev libusb-dev zlib1g-dev libudev-dev python-dev && \
    apt-get autoremove -y && \ 
    apt-get clean && \
    rm -rf /var/lib/apt/lists/*
