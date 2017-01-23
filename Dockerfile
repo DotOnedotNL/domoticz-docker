@@ -60,7 +60,7 @@ RUN apt-get remove -y git cmake linux-headers-amd64 build-essential libssl-dev l
 
 VOLUME /config
 
-EXPOSE 8080
+EXPOSE 8080 443 6144
 
 ENTRYPOINT ["/src/domoticz/domoticz", "-dbase", "/config/domoticz.db", "-log", "/config/domoticz.log"]
 CMD ["-www", "8080"]
