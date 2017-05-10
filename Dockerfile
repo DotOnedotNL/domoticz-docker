@@ -54,7 +54,7 @@ RUN make
 
 # install Sony Bravia support
 WORKDIR /src/domoticz/plugins
-RUN git clone https://github.com/gerard33/sony-bravia.git /src/domoticz/plugins
+RUN git clone https://github.com/gerard33/sony-bravia.git
 
 
 # remove git and tmp dirs
