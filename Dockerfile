@@ -51,12 +51,17 @@ RUN cmake -DCMAKE_BUILD_TYPE=Release .
 # compile
 RUN make
 
+
+# install Sony Bravia support
+WORKDIR /src/domoticz/plugins
+RUN git clone https://github.com/gerard33/sony-bravia.git /src/domoticz/plugins
+
+
 # remove git and tmp dirs
 RUN apt-get remove -y git cmake linux-headers-amd64 build-essential libssl-dev libboost-dev libboost-thread-dev libboost-system-dev libsqlite3-dev libcurl4-openssl-dev libusb-dev zlib1g-dev libudev-dev python-dev && \
    apt-get autoremove -y && \ 
    apt-get clean && \
    rm -rf /var/lib/apt/lists/*
-
 
 VOLUME /config
 
